@@ -2,7 +2,6 @@ apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
   name: amine-app1
-  namespace: argocd
   annotations:
     argocd.argoproj.io/hook: test
 spec:

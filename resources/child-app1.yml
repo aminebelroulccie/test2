@@ -7,7 +7,7 @@ metadata:
 spec:
   destination:
     namespace: default
-    server: https://kubernetes.default.svc
+    server: https://djamel.djamel:443
   project: default
   source:
     directory:

@@ -15,7 +15,7 @@ spec:
       jsonnet: {}
       recurse: true
     path: apps/child-app1
-    repoURL: https://github.com/Djamel-eddine/namla-apps-test.git
+    repoURL: https://github.com/aminebelroulccie/test2.git
     targetRevision: HEAD
   syncPolicy:
     automated:

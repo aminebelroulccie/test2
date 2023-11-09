@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: amine-app2
+spec:
+  destination:
+    namespace: default
+    server: https://djamel.djamel:443
+  project: default
+  source:
+    directory:
+      exclude: '*.json'
+      jsonnet: {}
+      recurse: true
+    path: apps/child-app2
+    repoURL: https://github.com/aminebelroulccie/test2.git
+    targetRevision: HEAD
+  syncPolicy:
+    automated:
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - CreateNameSpace=true

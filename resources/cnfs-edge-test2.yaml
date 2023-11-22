@@ -60,5 +60,5 @@ spec:
   config:
     scope: GLOBAL
     dst_network: 0.0.0.0/0
-    gw_addr: 172.20.0.1
+    gw_addr: 172.20.1.1
     metric: 0

@@ -2,12 +2,12 @@
 apiVersion: cnf.namla.com/v1alpha1
 kind: CloudNativeNetworkFunction
 metadata:
-  name: cnf-wan-mpls-1-edge-test2
+  name: cnf-wan-mpls-1-edge-test1
   namespace: namla-system
 spec:
-  address: 172.20.1.14/24
+  address: 172.20.0.215/24
   ifname: ens5
-  nodename: edge-test2
+  nodename: edge-test1
   nvni-name: nvni-1
   type: WAN
   control-plane:
@@ -16,12 +16,12 @@ spec:
 apiVersion: cnf.namla.com/v1alpha1
 kind: CloudNativeNetworkFunction
 metadata:
-  name: cnf-lan-lan-2-edge-test2
+  name: cnf-lan-lan-2-edge-test1
   namespace: namla-system
 spec:
-  address: 172.22.0.3/24
+  address: 172.22.0.2/24
   ifname: ens6
-  nodename: edge-test2
+  nodename: edge-test1
   nvni-name: nvni-2
   type: LAN
   #stn: true
@@ -31,18 +31,18 @@ spec:
 apiVersion: cnf.namla.com/v1alpha1
 kind: CloudNativeNetworkControllerVpnProfile
 metadata:
-  name: cnf-vpn-profile-cnf-wan-mpls-1-edge-test2
+  name: cnf-vpn-profile-cnf-wan-mpls-1-edge-test1
   namespace: namla-system
 spec:
-  nodename: edge-test2
-  cnf: cnf-wan-mpls-1-edge-test2
+  nodename: edge-test1
+  cnf: cnf-wan-mpls-1-edge-test1
   config:
     controllerId:
       id: controllercnf@namla.cloud
       type: RFC822_ADDR
     controllerIpAddress: 34.76.246.98
     localId:
-      id: cnf-wan-mpls-1-edge-test2@namla.cloud
+      id: cnf-wan-mpls-1-edge-test1@namla.cloud
       type: RFC822_ADDR
     authentication:
       type: psk
@@ -50,15 +50,16 @@ spec:
       key: password
 ---
 apiVersion: cnf.namla.com/v1alpha1
-kind: CloudNativeNetworkLinuxRoute
+kind: CloudNativeNetworkRoute
 metadata:
-  name: cnf-default-route-cnf-wan-mpls-1-edge-test2
+  name: cnf-default-route-cnf-wan-mpls-1-edge-test1
   namespace: namla-system
 spec:
-  nodename: edge-test2
-  cnf: cnf-wan-mpls-1-edge-test2
+  nodename: edge-test1
+  cnf: cnf-wan-mpls-1-edge-test1
   config:
-    scope: GLOBAL
+    type: INTRA_VRF
     dst_network: 0.0.0.0/0
-    gw_addr: 172.20.1.1
-    metric: 0
+    next_hop_addr: 172.20.0.1
+    preference: 0
+    weight: 1
